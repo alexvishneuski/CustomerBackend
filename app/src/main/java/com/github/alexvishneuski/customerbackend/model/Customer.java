@@ -1,0 +1,37 @@
+package com.github.alexvishneuski.customerbackend.model;
+
+import com.google.gson.annotations.SerializedName;
+
+public class Customer {
+
+    @SerializedName("id")
+    private Integer mId;
+    @SerializedName("name")
+    private String mName;
+    @SerializedName("phone")
+    private String mPhone;
+
+    public Integer getId() {
+        return mId;
+    }
+
+    public void setId(Integer pId) {
+        mId = pId;
+    }
+
+    public String getName() {
+        return mName;
+    }
+
+    public void setName(String pName) {
+        mName = pName;
+    }
+
+    public String getPhone() {
+        return mPhone;
+    }
+
+    public void setPhone(String pPhone) {
+        mPhone = pPhone;
+    }
+}
