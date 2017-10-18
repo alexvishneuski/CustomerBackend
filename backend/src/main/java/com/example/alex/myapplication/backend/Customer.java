@@ -8,36 +8,31 @@ import com.googlecode.objectify.annotation.Id;
 public class Customer {
 
     @Id
-    private Integer mId;
+    private Long id;
 
-    private String mName;
+    private String name;
 
-    private String mPhone;
+    private String phone;
 
     public Customer() {
+
     }
 
-    public Integer getId() {
-        return mId;
+    public Customer(Long id, String name, String phone) {
+        this.id = id;
+        this.name = name;
+        this.phone = phone;
     }
 
-    public void setId(Integer pId) {
-        mId = pId;
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
-        return mName;
-    }
-
-    public void setName(String pName) {
-        mName = pName;
+        return name;
     }
 
     public String getPhone() {
-        return mPhone;
-    }
-
-    public void setPhone(String pPhone) {
-        mPhone = pPhone;
+        return phone;
     }
 }
