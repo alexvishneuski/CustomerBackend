@@ -35,9 +35,9 @@ public class CustomerSaveActivity extends AppCompatActivity {
         mSaveCustomerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String result = "Customer is saved: id = " + mInputIdEditText.getText()
-                        + "name = " + mInputNameEditText.getText()
-                        + " phone = " + mInputPhoneEditText.getText();
+                String result = "Customer is saved: id = \"" + mInputIdEditText.getText()
+                        + "\"; name = \"" + mInputNameEditText.getText()
+                        + "\"; phone = \"" + mInputPhoneEditText.getText()+"\"";
                 showResult(result);
             }
         });
