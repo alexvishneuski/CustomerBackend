@@ -1,16 +1,19 @@
 package com.github.alexvishneuski.customerbackend.activitys;
 
-import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Pair;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.alex.myapplication.backend.customerApi.CustomerApi;
 import com.github.alexvishneuski.customerbackend.R;
-import com.github.alexvishneuski.customerbackend.asynctask.EndpointsAsyncTask;
+import com.github.alexvishneuski.customerbackend.asynctask.CustomerApiBuilder;
+
+import java.io.IOException;
+
 
 public class CustomerSaveActivity extends AppCompatActivity {
 
@@ -38,12 +41,14 @@ public class CustomerSaveActivity extends AppCompatActivity {
         mSaveCustomerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             /*   String result = "Customer is saved: id = \"" + mInputIdEditText.getText()
-                        + "\"; name = \"" + mInputNameEditText.getText()
-                        + "\"; phone = \"" + mInputPhoneEditText.getText()+"\"";
-                showResult(result);
-                */
-                new EndpointsAsyncTask().execute(new Pair<Context, String>(CustomerSaveActivity.this, "Manfred"));
+
+                String id = mInputIdEditText.getText().toString();
+                String name = mInputNameEditText.getText().toString();
+                String phone = mInputPhoneEditText.getText().toString();
+
+                new EndpointsAsyncTask().execute(id, name, phone);
+
+
             }
         });
         mShowSavedTextView = (TextView) findViewById(R.id.show_saved_text_view);
@@ -54,4 +59,33 @@ public class CustomerSaveActivity extends AppCompatActivity {
     }
 
 
+    class EndpointsAsyncTask extends AsyncTask<String, Void, String> {
+        private CustomerApi myApiService = null;
+
+        @Override
+        protected String doInBackground(String... customerFields) {
+            if (myApiService == null) {  // Only do this once
+                myApiService = CustomerApiBuilder.buildApi();
+            }
+
+            String id = customerFields[0];
+            String name = customerFields[1];
+            String phone = customerFields[2];
+
+            try {
+                myApiService.insert(id, name, phone).execute();
+                //  myApiService.get(Long.valueOf(id));
+                return "Inserted";
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            finish();
+        }
+    }
 }
+
