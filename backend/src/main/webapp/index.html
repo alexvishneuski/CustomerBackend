@@ -55,11 +55,16 @@
                     API.</p>
                 <form>
                     <div class="input-group">
+                        <input type="text" class="form-control input-lg" placeholder="Id"
+                               id="idInput"/>
                         <input type="text" class="form-control input-lg" placeholder="Name"
                                id="nameInput"/>
+                        <input type="text" class="form-control input-lg" placeholder="Phone"
+                               id="phoneInput"/>
+
                         <span class="input-group-btn">
                              <button class="btn btn-default btn-primary btn-group btn-lg"
-                                     type="submit" id="helloButton">Say "Hello" &raquo;</button>
+                                     type="submit" id="helloButton">Save&raquo;</button>
                           </span>
                     </div>
                 </form>
@@ -89,8 +94,10 @@
     // A function that attaches a "Say Hello" button click handler
     function enableClick() {
       document.getElementById('helloButton').onclick = function() {
+          var id = document.getElementById('idInput').value;
         var name = document.getElementById('nameInput').value;
-        gapi.client.myApi.sayHi({'name': name}).execute(
+          var phone = document.getElementById('phoneInput').value;
+        gapi.client.customerApi.insert({'id': id, 'name': name, 'phone': phone}).execute(
           function(response) {
             var outputAlertDiv = document.getElementById('outputAlert');
             outputAlertDiv.style.visibility = 'visible';
@@ -110,7 +117,7 @@
     }
     // This is called initially
     function init() {
-      var apiName = 'myApi';
+      var apiName = 'customerApi';
       var apiVersion = 'v1';
       var apiRoot = 'https://' + window.location.host + '/_ah/api';
       if (window.location.hostname == 'localhost'

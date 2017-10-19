@@ -79,6 +79,7 @@ public class CustomerEndpoint {
         // Objectify ID generator, e.g. long or String, then you should generate the unique ID yourself prior to saving.
         //
         // If your client provides the ID then you should probably use PUT instead.
+        logger.info("In method Insert ");
         Customer customer = new Customer(Long.valueOf(id), name, phone);
         ofy().save().entity(customer).now();
         logger.info("Created Customer with ID: " + customer.getId());
