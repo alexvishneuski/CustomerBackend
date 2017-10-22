@@ -97,6 +97,9 @@
           var id = document.getElementById('idInput').value;
         var name = document.getElementById('nameInput').value;
           var phone = document.getElementById('phoneInput').value;
+
+      //change from customerApi -> userApi
+
         gapi.client.customerApi.insert({'id': id, 'name': name, 'phone': phone}).execute(
           function(response) {
             var outputAlertDiv = document.getElementById('outputAlert');
@@ -117,6 +120,9 @@
     }
     // This is called initially
     function init() {
+
+    //change from customerApi to userApi
+
       var apiName = 'customerApi';
       var apiVersion = 'v1';
       var apiRoot = 'https://' + window.location.host + '/_ah/api';
@@ -131,6 +137,8 @@
       }
       gapi.client.load(apiName, apiVersion, callback, apiRoot);
     }
+
+
 
 </script>
 <!--

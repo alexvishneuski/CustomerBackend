@@ -13,7 +13,7 @@ import java.io.IOException;
  */
 
 public class CustomerApiBuilder {
-    public static final String LOCALHOST_PATH = "http://localhost:8080/_ah/api/";
+    public static final String LOCALHOST_PATH = "http://127.0.0.1:8080/_ah/api/";
 
     public static CustomerApi buildApi() {
         CustomerApi.Builder builder = new CustomerApi.Builder(AndroidHttp.newCompatibleTransport(),

@@ -20,10 +20,16 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/save_button"
+        android:id="@+id/save_customer_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SAVE CUSTOMER" />
+
+    <Button
+        android:id="@+id/load_last_customer_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LOAD LAST CUSTOMER" />
 
     <TextView
         android:id="@+id/show_saved_text_view"

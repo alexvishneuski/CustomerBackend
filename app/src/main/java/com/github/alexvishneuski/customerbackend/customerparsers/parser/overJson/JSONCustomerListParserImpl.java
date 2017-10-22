@@ -3,8 +3,11 @@ package com.github.alexvishneuski.customerbackend.customerparsers.parser.overJso
 
 
 import com.github.alexvishneuski.customerbackend.customerparsers.parser.ICustomerListParser;
+import com.github.alexvishneuski.customerbackend.model.Customer;
+import com.github.alexvishneuski.customerbackend.model.ICustomerList;
 
 import java.io.InputStream;
+import java.util.List;
 
 
 public class JSONCustomerListParserImpl implements ICustomerListParser {
@@ -15,4 +18,8 @@ public class JSONCustomerListParserImpl implements ICustomerListParser {
         this.mInputStream = pInputStream;
     }
 
+    @Override
+    public ICustomerList parce() throws Exception {
+        return null;
+    }
 }

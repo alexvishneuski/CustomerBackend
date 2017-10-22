@@ -14,7 +14,8 @@
         <init-param>
             <param-name>services</param-name>
             <param-value>com.example.alex.myapplication.backend.MyEndpoint,
-                com.example.alex.myapplication.backend.CustomerEndpoint</param-value>
+                com.example.alex.myapplication.backend.CustomerEndpoint,
+                com.example.alex.myapplication.backend.UserEndpoint</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>

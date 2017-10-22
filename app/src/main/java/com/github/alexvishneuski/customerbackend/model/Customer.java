@@ -5,17 +5,22 @@ import com.google.gson.annotations.SerializedName;
 public class Customer {
 
     @SerializedName("id")
-    private Integer mId;
+    private Long mId;
     @SerializedName("name")
     private String mName;
     @SerializedName("phone")
     private String mPhone;
 
-    public Integer getId() {
+    public Customer(Long pId, String pName, String pPhone) {
+
+    }
+
+
+    public Long getId() {
         return mId;
     }
 
-    public void setId(Integer pId) {
+    public void setId(Long pId) {
         mId = pId;
     }
 

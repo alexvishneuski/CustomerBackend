@@ -7,7 +7,7 @@ import java.net.URL;
 public class HttpClient implements IHttpClient {
 
     @Override
-    public void request(String url, ResponseListener listener) {
+    public void getAllCustomersRequest(String url, ResponseListener listener) {
         try {
             HttpURLConnection con = (HttpURLConnection) (new URL(url)).openConnection();
             InputStream is = con.getInputStream();
@@ -17,6 +17,14 @@ public class HttpClient implements IHttpClient {
             t.printStackTrace();
         }
     }
+
+    @Override
+    public void saveCustomerRequest(String url, String body, ResponseListener listener) {
+
+
+
+    }
+
 
     public interface ResponseListener {
         void onResponse(InputStream inputStream);

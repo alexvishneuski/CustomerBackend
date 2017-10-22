@@ -2,6 +2,7 @@ package com.github.alexvishneuski.customerbackend.customerparsers.parser.overGso
 
 
 import com.github.alexvishneuski.customerbackend.customerparsers.parser.ICustomerParser;
+import com.github.alexvishneuski.customerbackend.model.Customer;
 
 public class GSONCustomerParserImpl implements ICustomerParser {
     private final String mSource;
@@ -10,4 +11,8 @@ public class GSONCustomerParserImpl implements ICustomerParser {
         mSource = pSource;
     }
 
+    @Override
+    public Customer parse() throws Exception {
+        return null;
+    }
 }
