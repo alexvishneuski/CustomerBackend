@@ -11,16 +11,17 @@ import java.io.Reader;
 
 public class GSONCustomerListWithObjectParcerImpl implements ICustomerListParser {
 
-    @Override
-    public ICustomerList parce() throws Exception {
-        Reader reader = new InputStreamReader(mIntputStream);
-        return new Gson().fromJson(reader, GSONCustomerListWithObject.class);
-     }
-
     private final InputStream mIntputStream;
 
     public GSONCustomerListWithObjectParcerImpl(InputStream pIntputStream) {
         this.mIntputStream = pIntputStream;
     }
+
+    @Override
+    public ICustomerList parce() throws Exception {
+        Reader reader = new InputStreamReader(mIntputStream);
+        return new Gson().fromJson(reader, GSONCustomerListWithObject.class);
+    }
+
 
 }

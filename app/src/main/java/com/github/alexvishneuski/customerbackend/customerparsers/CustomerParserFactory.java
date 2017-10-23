@@ -3,9 +3,10 @@ package com.github.alexvishneuski.customerbackend.customerparsers;
 
 import com.github.alexvishneuski.customerbackend.customerparsers.parser.ICustomerListParser;
 import com.github.alexvishneuski.customerbackend.customerparsers.parser.ICustomerParser;
+import com.github.alexvishneuski.customerbackend.customerparsers.parser.overGson.GSONCustomerFromStringParserImpl;
 import com.github.alexvishneuski.customerbackend.customerparsers.parser.overGson.GSONCustomerListParserImpl;
 import com.github.alexvishneuski.customerbackend.customerparsers.parser.overGson.GSONCustomerListWithObjectParcerImpl;
-import com.github.alexvishneuski.customerbackend.customerparsers.parser.overGson.GSONCustomerParserImpl;
+import com.github.alexvishneuski.customerbackend.customerparsers.parser.overGson.GSONCustomerFromInputstreamParserImpl;
 import com.github.alexvishneuski.customerbackend.customerparsers.parser.overJson.JSONCustomerListParserImpl;
 import com.github.alexvishneuski.customerbackend.customerparsers.parser.overJson.JSONCustomerParserImpl;
 
@@ -18,8 +19,12 @@ public class CustomerParserFactory {
         return new JSONCustomerParserImpl(pSource);
     }
 
-    public ICustomerParser createGsonParser(String pSource) {
-        return new GSONCustomerParserImpl(pSource);
+    public ICustomerParser createGsonParserFromInputstream(InputStream pSource) {
+        return new GSONCustomerFromInputstreamParserImpl(pSource);
+    }
+
+    public ICustomerParser createGsonParserFromString(String pSource) {
+        return new GSONCustomerFromStringParserImpl(pSource);
     }
 
     public ICustomerListParser createJsonListParser(InputStream pSource) {

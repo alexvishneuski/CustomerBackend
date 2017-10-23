@@ -1,7 +1,7 @@
 package com.github.alexvishneuski.customerbackend.customerparsers.parser.overGson;
 
 
-import com.github.alexvishneuski.customerbackend.customerparsers.parser.CustomerGson;
+import com.github.alexvishneuski.customerbackend.model.CustomerGson;
 import com.github.alexvishneuski.customerbackend.customerparsers.parser.ICustomerListParser;
 import com.github.alexvishneuski.customerbackend.model.CustomerListGson;
 import com.github.alexvishneuski.customerbackend.model.ICustomerList;

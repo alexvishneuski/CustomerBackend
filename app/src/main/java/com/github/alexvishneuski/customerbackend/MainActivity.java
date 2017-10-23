@@ -10,10 +10,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startCustomerSaveActivity();
+        startCustomerActivity();
     }
 
-    private void startCustomerSaveActivity() {
+    private void startCustomerActivity() {
         startActivity(new Intent(this, CustomerActivity.class));
     }
 }

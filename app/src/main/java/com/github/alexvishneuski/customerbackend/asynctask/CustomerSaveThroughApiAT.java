@@ -15,13 +15,7 @@ import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 
 import java.io.IOException;
 
-/**
- * Created by evgen on 12.10.2017.
- */
-
-public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String[]>, Void, String> {
-    public static final String NO_DATA = "No data";
-
+public class CustomerSaveThroughApiAT extends AsyncTask<Pair<Context, String[]>, Void, String> {
 
     private static CustomerApi myApiService = null;
     private Context context;
@@ -52,39 +46,26 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String[]>, Void,
         String name = params[0].second[1];
         String phone = params[0].second[2];
 
-        Customer user = new Customer();
-        user.setId(Long.valueOf(id));
-        user.setName(name);
-        user.setPhone(phone);
-
-        Customer resUser = new Customer();
-
+        Customer customer = new Customer();
+        customer.setId(Long.valueOf(id));
+        customer.setName(name);
+        customer.setPhone(phone);
 
         try {
-            myApiService.insert(user).execute();
+            myApiService.insert(customer).execute();
+            return String.format("Saved customer: id = %s, name = %s, phone = %s", customer.getId().toString(), customer.getName(), customer.getPhone());
         } catch (IOException e) {
+
             e.printStackTrace();
-        }
-        if (resUser != null) {
-            System.out.println(resUser.getId() + resUser.getName() + resUser.getPhone());
-        }
-
-        /*try {
-            List<User> users = myApiService.list().execute().getItems();
-            if (users == null || users.isEmpty()){
-                return NO_DATA;
-            }
-
-            return users.get(users.size()).getName();
-        } catch (IOException e) {
             return e.getMessage();
-        }*/
-        return "Inserted";
+        }
+
+
     }
 
     @Override
-    public void onPostExecute(String result) {
-        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+    public void onPostExecute(String pResult) {
+        Toast.makeText(context, pResult, Toast.LENGTH_LONG).show();
     }
 
 }

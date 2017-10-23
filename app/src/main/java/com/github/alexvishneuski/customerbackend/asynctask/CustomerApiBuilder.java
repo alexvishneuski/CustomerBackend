@@ -8,12 +8,8 @@ import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 
 import java.io.IOException;
 
-/**
- * Created by Asus on 19.10.2017.
- */
-
 public class CustomerApiBuilder {
-    public static final String LOCALHOST_PATH = "http://127.0.0.1:8080/_ah/api/";
+    public static final String LOCALHOST_PATH = "http://10.0.2.2:8080/_ah/api/customerApi/v1/customer/";
 
     public static CustomerApi buildApi() {
         CustomerApi.Builder builder = new CustomerApi.Builder(AndroidHttp.newCompatibleTransport(),

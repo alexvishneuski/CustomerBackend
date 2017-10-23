@@ -12,9 +12,13 @@ public class Customer {
     private String mPhone;
 
     public Customer(Long pId, String pName, String pPhone) {
-
+        mId = pId;
+        mName = pName;
+        mPhone = pPhone;
     }
 
+    public Customer() {
+    }
 
     public Long getId() {
         return mId;

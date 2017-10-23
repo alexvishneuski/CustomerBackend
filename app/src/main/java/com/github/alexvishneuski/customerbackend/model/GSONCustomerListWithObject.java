@@ -1,6 +1,5 @@
 package com.github.alexvishneuski.customerbackend.model;
 
-import com.github.alexvishneuski.customerbackend.customerparsers.parser.CustomerGson;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;

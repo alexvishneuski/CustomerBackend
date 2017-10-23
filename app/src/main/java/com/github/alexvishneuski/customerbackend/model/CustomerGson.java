@@ -1,4 +1,4 @@
-package com.github.alexvishneuski.customerbackend.customerparsers.parser;
+package com.github.alexvishneuski.customerbackend.model;
 
 import com.github.alexvishneuski.customerbackend.model.ICustomer;
 import com.google.gson.annotations.SerializedName;
