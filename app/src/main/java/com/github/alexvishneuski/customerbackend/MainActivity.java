@@ -10,10 +10,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startCustomerActivity();
+        startCheckVersionActivity();
+
+//        startCustomerActivity();
+
     }
+
+    private void startCheckVersionActivity() {
+        startActivity(new Intent(this, CheckVersionActivity.class));
+    }
+
 
     private void startCustomerActivity() {
         startActivity(new Intent(this, CustomerActivity.class));
     }
+
+
 }
