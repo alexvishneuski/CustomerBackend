@@ -6,17 +6,38 @@
 
 package com.github.alexvishneuski.customerbackend.version_checker;
 
+import com.example.AppVersion;
+import com.google.gson.Gson;
+
 import java.io.IOException;
 
 import javax.servlet.http.*;
 
-public class MyServlet extends HttpServlet {
+public class AppVersionCheckerServlet extends HttpServlet {
+
+    //TODO make separate json doc with versionNumber, access throuth interface
+    private Integer appVersionId = 1;
+
     @Override
-    public void doGet(HttpServletRequest req, HttpServletResponse resp)
+    public void doGet(final HttpServletRequest pRequest, final HttpServletResponse pResponse)
             throws IOException {
-        resp.setContentType("text/plain");
-        resp.getWriter().println("Please use the form to POST to this url");
+        pResponse.setContentType("application/json");
+
+        final AppVersion version = new AppVersion();
+
+            version.setId(appVersionId);
+
+        //TODO what is faster?
+
+        //1
+        new Gson().toJson(version, pResponse.getWriter());
+
+        //2
+//        final String versionAsString = new Gson().toJson(version);
+//        pResponse.getWriter().print(versionAsString);
     }
+
+
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
