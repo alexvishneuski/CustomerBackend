@@ -24,6 +24,4 @@ public class MainActivity extends AppCompatActivity {
     private void startCustomerActivity() {
         startActivity(new Intent(this, CustomerActivity.class));
     }
-
-
 }
