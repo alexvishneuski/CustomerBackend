@@ -1,14 +1,23 @@
 package com.github.alexvishneuski.customerbackend;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ThemedSpinnerAdapter;
+
+import com.github.alexvishneuski.customerbackend.asynctask.AppVersionChecker;
 
 
 public class CheckAppVersionActivity extends AppCompatActivity {
     private View mUpdateAppversionNowButton;
     private View mUpdateAppversionLaterButton;
+    private Context mContext;
+    private Boolean versionOk = null;
+
+
+    private AppVersionChecker mChecker;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,6 +32,28 @@ public class CheckAppVersionActivity extends AppCompatActivity {
         mUpdateAppversionLaterButton = findViewById(R.id.update_appversion_later_button);
 
         //TODO perform version cheking throuth AsuncTask, during it process show some indicator
+        //this is in separate thtead
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mChecker = new AppVersionChecker(CheckAppVersionActivity.this);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        versionOk = mChecker.checkAppVersion();
+                    }
+                });
+            }
+        }).start();
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        // mContext = mChecker.getContext();
+        mUpdateAppversionLaterButton.setEnabled(versionOk ? true : false);
 
         //TODO if client version is lower -> make cancel button inaktiv
 //        mUpdateAppversionLaterButton.setEnabled(false);

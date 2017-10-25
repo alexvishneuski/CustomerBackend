@@ -20,7 +20,7 @@ public class HttpClient implements IHttpClient {
             pListener.onResponse(is);
             con.disconnect();
         } catch (final Throwable t) {
-            pListener.onError(t);
+     //       pListener.onError(t);
         } finally {
             if (con != null) {
                 con.disconnect();
@@ -71,7 +71,7 @@ public class HttpClient implements IHttpClient {
     }
 
     public interface ResponseListener {
-        void onResponse(InputStream pInputStream);
+        void onResponse(InputStream pInputStream) throws Exception;
 
         void onError(Throwable pThrowable);
     }
