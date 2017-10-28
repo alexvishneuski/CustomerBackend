@@ -11,7 +11,9 @@ import com.google.gson.Gson;
 
 import java.io.IOException;
 
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class AppVersionCheckerServlet extends HttpServlet {
 
@@ -25,7 +27,7 @@ public class AppVersionCheckerServlet extends HttpServlet {
 
         final AppVersion version = new AppVersion();
 
-            version.setId(appVersionId);
+        version.setId(appVersionId);
 
         //TODO what is faster?
 
@@ -38,15 +40,14 @@ public class AppVersionCheckerServlet extends HttpServlet {
     }
 
 
-
     @Override
-    public void doPost(HttpServletRequest req, HttpServletResponse resp)
+    public void doPost(HttpServletRequest pRequest, HttpServletResponse pResponse)
             throws IOException {
-        String name = req.getParameter("name");
-        resp.setContentType("text/plain");
-        if (name == null) {
-            resp.getWriter().println("Please enter a name");
-        }
-        resp.getWriter().println("Hello " + name);
+        Integer id = Integer.valueOf(pRequest.getParameter("version"));
+        pResponse.setContentType("application/json");
+        final AppVersion version = new AppVersion();
+        version.setId(appVersionId);
+        new Gson().toJson(version, pResponse.getWriter());
+
     }
 }

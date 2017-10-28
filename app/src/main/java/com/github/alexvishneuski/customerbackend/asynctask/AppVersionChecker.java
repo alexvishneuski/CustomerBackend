@@ -14,7 +14,8 @@ import java.io.InputStreamReader;
 
 public class AppVersionChecker {
 
-    public final String APP_VERSION_URL = "http://localhost:8080";
+//    public final String APP_VERSION_URL = "http://10.0.2.3:8080/";
+public final String APP_VERSION_URL = "https://version-checker-1508930507551.appspot.com";
 
     public Context getContext() {
         return mContext;
@@ -26,12 +27,14 @@ public class AppVersionChecker {
         mContext = pContext;
     }
 
-    public boolean checkAppVersion() {
+    public Boolean checkAppVersion() {
+//        Integer onDeviceVersion = 2;
         Integer onDeviceVersion = getAppVersionOnDevice();
-        Integer fromServerVersion = 1;
-//        Integer fromServerVersion = getAppVersionFromServer();
-
-
+//        Integer fromServerVersion = 1;
+        Integer fromServerVersion = getAppVersionFromServer();
+//
+        Boolean isOk = fromServerVersion.equals(onDeviceVersion);
+        System.out.println(isOk);
         return (fromServerVersion.equals(onDeviceVersion));
     }
 
@@ -39,7 +42,7 @@ public class AppVersionChecker {
 
         //getting url
         final String url = new DomainApi(APP_VERSION_URL).getLastAppVersionPath();
-        final MyResponseListener listener = new MyResponseListener();
+        MyResponseListener listener = new MyResponseListener();
         new HttpClient().getCurrentAppVersion(url, listener);
         if (listener.getThrowable() != null) {
             //TODO implement error handling on UI

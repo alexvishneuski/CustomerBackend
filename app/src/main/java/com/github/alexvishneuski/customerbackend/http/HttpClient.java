@@ -16,7 +16,10 @@ public class HttpClient implements IHttpClient {
     @Override
     public void getCurrentAppVersion(String pUrl, ResponseListener pListener) {
         try {
-            final InputStream is = openStream(pUrl);
+            InputStream is;
+//            is = openStream(pUrl);
+            con = (HttpURLConnection) (new URL(pUrl)).openConnection();
+            is = con.getInputStream();
             pListener.onResponse(is);
             con.disconnect();
         } catch (final Throwable t) {
@@ -64,11 +67,11 @@ public class HttpClient implements IHttpClient {
     }
 
 
-    @VisibleForTesting
+   /* //@VisibleForTesting
     InputStream openStream(final String url) throws IOException {
         con = (HttpURLConnection) (new URL(url)).openConnection();
         return con.getInputStream();
-    }
+    }*/
 
     public interface ResponseListener {
         void onResponse(InputStream pInputStream) throws Exception;
