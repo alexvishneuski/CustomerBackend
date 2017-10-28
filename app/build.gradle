@@ -30,7 +30,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "store"
+
     productFlavors {
+
+        GooglePlay {
+            flavorDimension "store"
+            buildConfigField "String", "SHARE_URL", "\"http://myappforgooglestore.com\""
+        }
+
+        Amazon {
+            flavorDimension "store"
+            buildConfigField "String", "SHARE_URL", "\"http://myappforamazon.com\""
+        }
+
     }
 }
 

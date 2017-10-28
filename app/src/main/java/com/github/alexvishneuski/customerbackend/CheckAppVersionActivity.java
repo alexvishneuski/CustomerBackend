@@ -15,7 +15,7 @@ import com.github.alexvishneuski.customerbackend.asynctask.PseudoDownloadAT;
 
 public class CheckAppVersionActivity extends AppCompatActivity {
 
-    public static final String APP_SOURCE = "https://google.com";
+    public static final String APP_SOURCE = BuildConfig.SHARE_URL;
     private View mUpdateAppversionNowButton;
     private View mUpdateAppversionLaterButton;
     private Boolean isVersionOk = null;
