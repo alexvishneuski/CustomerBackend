@@ -46,6 +46,7 @@ public class CustomerSaverAT extends AsyncTask<Pair<Context, String>, Void, Stri
                 wr.flush();
                 wr.close();
             }
+
         }, new HttpClient.ResponseListener() {
             @Override
             public void onResponse(InputStream pInputStream) {
@@ -54,6 +55,12 @@ public class CustomerSaverAT extends AsyncTask<Pair<Context, String>, Void, Stri
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            }
+
+            @Override
+            public void onError(Throwable pThrowable) {
+                //TODO implement error handling on UI
+                throw new UnsupportedOperationException();
             }
         });
 
