@@ -39,6 +39,12 @@ public class CustomerListLoaderAT extends AsyncTask<Context, Void, String> {
                     e.printStackTrace();
                 }
             }
+
+            @Override
+            public void onError(Throwable pThrowable) {
+                //TODO implement error handling on UI
+                throw new UnsupportedOperationException();
+            }
         });
 
         mContext = pParams[0];
